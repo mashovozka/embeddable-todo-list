@@ -6,7 +6,7 @@ export function* todosSaga() {
   yield takeEvery(TODOS_ACTION_TYPES.GET_TODOS, function* () {
     try {
       const response = yield call(todosApi.getTodos);
-      yield put(setTodos(response.data));
+      yield put(setTodos(response));
     } catch (error) {}
   });
 }

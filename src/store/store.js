@@ -14,6 +14,6 @@ const middleWares = [
 
 const composedEnhancers = compose(applyMiddleware(...middleWares));
 
-sagaMiddleware.run(rootSaga);
-
 export const store = createStore(rootReducer, undefined, composedEnhancers);
+
+sagaMiddleware.run(rootSaga);
