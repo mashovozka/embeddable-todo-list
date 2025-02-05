@@ -1,15 +1,11 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import { Status } from "./Status";
+import { Status } from "../Status";
+import TodoForm from "../todoForm/todoForm.component";
+import Todo from "../todo/todo.component";
 
 export default function TodoList() {
-  const [value, setValue] = useState("");
-
   const [todos, setTodos] = useState([]);
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     setTodos([
@@ -25,10 +21,10 @@ export default function TodoList() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input required type="text" value={value} onChange={handleChange} />
+      <TodoForm />
       <ul>
         {todos.map((todo, i) => (
-          <li key={i}>{todo.value}</li>
+          <Todo key={i} todo={todo} />
         ))}
       </ul>
       <button type="submit">add todo</button>

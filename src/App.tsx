@@ -1,4 +1,4 @@
-import TodoList from "./components/TodoList";
+import TodoList from "./components/todoList/todoList.component";
 
 const App = () => {
   return (
