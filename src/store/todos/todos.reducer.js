@@ -1,0 +1,35 @@
+import { TODOS_ACTION_TYPES } from "./todos.actions";
+
+export const TODOS_INITIAL_STATE = {
+  todos: [
+    {
+      id: "yRTKiDy0-s_9zrh0zAMaK",
+      value: "learn react",
+      done: true,
+      createdAt: 1650802513913,
+    },
+    {
+      id: "Ia4t6uQ-op5aq4Hbt14qd",
+      value: "lear redux",
+      done: true,
+      createdAt: 1650804005530,
+    },
+    {
+      id: "uzj6QITRsvnMMmHAlv0nJ",
+      value: "fix my robot :D",
+      done: false,
+      createdAt: 1650804402054,
+    },
+  ],
+};
+
+export const todosReducer = (state = TODOS_INITIAL_STATE, action = {}) => {
+  switch (action.type) {
+    case TODOS_ACTION_TYPES.SET_TODOS:
+      return [...state, action.payload];
+    case TODOS_ACTION_TYPES.ADD_TODO:
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+};
