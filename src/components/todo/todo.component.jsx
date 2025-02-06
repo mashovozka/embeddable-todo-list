@@ -14,7 +14,11 @@ export default function Todo({ todo }) {
 
   return (
     <TodoContainer isComplete={isComplete} onClick={toggleComplete}>
-      <TodoCheckbox checked={isComplete} type="checkbox" id={id}></TodoCheckbox>
+      <TodoCheckbox
+        defaultChecked={isComplete}
+        type="checkbox"
+        id={id}
+      ></TodoCheckbox>
       <TodoValue>{value}</TodoValue>
     </TodoContainer>
   );

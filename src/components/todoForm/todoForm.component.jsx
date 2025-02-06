@@ -1,37 +1,43 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NewTodoForm } from "./todoForm.styles";
+import { nanoid } from "nanoid";
+import { TODOS_ACTION_TYPES } from "../../store/todos/todos.action";
 
 export default function TodoForm() {
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+
+  const [formField, setFormField] = useState("");
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setFormField(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    // setTodos([
-    //   ...todos,
-    //   {
-    //     id: nanoid(),
-    //     value: e.target.value,
-    //     done: false,
-    //     createdAt: Date.now(),
-    //   },
-    // ]);
+    e.preventDefault();
+    const newTodo = {
+      id: nanoid(),
+      value: formField,
+      isComplete: false,
+      createdAt: Date.now(),
+    };
+
+    dispatch({ type: TODOS_ACTION_TYPES.ADD_TODO, payload: newTodo });
+    setFormField("");
   };
 
   return (
     <NewTodoForm onSubmit={handleSubmit}>
-      <label htmlFor="task">New Todo:</label>
       <input
         id="task"
         placeholder="write new todo"
         required
         type="text"
         name="task"
-        value={value}
+        value={formField}
         onChange={handleChange}
       />
+      <button type="submit">Add</button>
     </NewTodoForm>
   );
 }

@@ -1,4 +1,4 @@
-import Status from "./Status/Status";
+import Status from "../Status/Status.component";
 import TodoForm from "../todoForm/todoForm.component";
 import Todo from "../todo/todo.component";
 import { TodoListContainer, TodoItemsContainer } from "./todoList.styles";
@@ -18,9 +18,11 @@ export default function TodoList() {
     dispatch(getTodos());
   }, [countRef, dispatch]);
 
+  console.log("todos", todos);
+
   return (
     <TodoListContainer>
-      <h1 className="header">Todo List</h1>
+      <h1>Todo List</h1>
       <TodoForm />
       <Status />
       <TodoItemsContainer>

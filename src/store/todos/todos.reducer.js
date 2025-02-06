@@ -11,15 +11,18 @@ export const todosReducer = (state = initialState, action) => {
     case TODOS_ACTION_TYPES.SET_TODOS:
       return {
         ...state,
-        todos: [...action.payload]
-          .sort((a, b) => b.isComplete - a.isComplete)
-          .reverse(),
+        todos: [...state.todos, ...action.payload],
         completedTodos: action.payload.filter((todo) => todo.isComplete).length,
         inProgressTodos: action.payload.filter((todo) => !todo.isComplete)
           .length,
       };
     case TODOS_ACTION_TYPES.ADD_TODO:
-      return [...state, ...action.payload];
+      return {
+        ...state,
+        todos: [action.payload, ...state.todos],
+        inProgressTodos: state.inProgressTodos + 1,
+      };
+
     case TODOS_ACTION_TYPES.REMOVE_TODO:
       return state.filter((todo) => todo.id !== action.payload);
     case TODOS_ACTION_TYPES.TOGGLE_COMPLETE_TODO:

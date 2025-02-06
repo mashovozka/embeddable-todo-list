@@ -1,10 +1,11 @@
 import TodoList from "./components/todoList/todoList.component";
+import { AppContainer } from "./App.styles";
 
 const App = () => {
   return (
-    <div className="App">
+    <AppContainer>
       <TodoList />
-    </div>
+    </AppContainer>
   );
 };
 
