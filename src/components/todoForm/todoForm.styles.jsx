@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-  mainColor,
-  secondaryColor,
-} from "../../components/todoList/todoList.styles";
+import { mainColor, secondaryColor } from "../../App.styles";
 
 export const NewTodoForm = styled.form`
   display: flex;
@@ -31,6 +28,5 @@ export const NewTodoForm = styled.form`
     margin-left: 1rem;
     cursor: pointer;
     font-size: 1.5rem;
-    font-family: "Roboto", sans-serif;
   }
 `;

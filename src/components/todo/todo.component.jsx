@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import "./todo.styles.jsx";
-import { TodoContainer, TodoCheckbox, TodoValue } from "./todo.styles";
+import { TodoContainer } from "./todo.styles";
 import { TODOS_ACTION_TYPES } from "../../store/todos/todos.action";
 
 export default function Todo({ todo }) {
   const dispatch = useDispatch();
 
-  const { value, isComplete, id } = todo;
+  const { value, isComplete } = todo;
 
   const toggleComplete = () => {
     dispatch({ type: TODOS_ACTION_TYPES.TOGGLE_COMPLETE_TODO, payload: todo });
@@ -14,12 +14,7 @@ export default function Todo({ todo }) {
 
   return (
     <TodoContainer isComplete={isComplete} onClick={toggleComplete}>
-      <TodoCheckbox
-        defaultChecked={isComplete}
-        type="checkbox"
-        id={id}
-      ></TodoCheckbox>
-      <TodoValue>{value}</TodoValue>
+      {value}
     </TodoContainer>
   );
 }

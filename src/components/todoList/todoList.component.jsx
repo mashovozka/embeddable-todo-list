@@ -30,7 +30,6 @@ export default function TodoList() {
           <Todo key={i} todo={todo} />
         ))}
       </TodoItemsContainer>
-      {/* <button type="submit">add todo</button> */}
     </TodoListContainer>
   );
 }

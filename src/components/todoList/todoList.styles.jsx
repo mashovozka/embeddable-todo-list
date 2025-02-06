@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
-export const mainColor = "#002244";
-export const secondaryColor = "#f7f1f1";
+import { mainColor } from "../../App.styles";
 
 export const TodoListContainer = styled.div`
   margin: 4rem auto;
   max-width: 500px;
-  background: white;
   border: 2px solid ${mainColor};
   border-radius: 20px;
   color: ${mainColor};
@@ -23,4 +21,6 @@ export const TodoListContainer = styled.div`
 export const TodoItemsContainer = styled.div`
   margin: auto;
   width: 90%;
+  display: flex;
+  flex-direction: column;
 `;

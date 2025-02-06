@@ -1,22 +1,11 @@
 import styled from "styled-components";
+import { mainColor } from "../../App.styles";
 
 export const TodoContainer = styled.label`
-  display: flex;
-  margin: 1rem auto;
-  padding: 1.1rem 0;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
+  margin: 0.5rem auto;
+  padding: 1.1rem;
+  border: 1px solid ${mainColor};
   border-radius: 8px;
-  width: 100%;
+  width: 80%;
   text-decoration: ${(props) => (props.isComplete ? "line-through" : "none")};
-  position: relative;
-`;
-
-export const TodoCheckbox = styled.input`
-  width: 10%;
-`;
-
-export const TodoValue = styled.span`
-  width: 60%;
 `;
