@@ -9,7 +9,10 @@ export default function Todo({ todo }) {
   const { value, isComplete } = todo;
 
   const toggleComplete = () => {
-    dispatch({ type: TODOS_ACTION_TYPES.TOGGLE_COMPLETE_TODO, payload: todo });
+    dispatch({
+      type: TODOS_ACTION_TYPES.TOGGLE_COMPLETE_TODO,
+      payload: todo,
+    });
   };
 
   return (

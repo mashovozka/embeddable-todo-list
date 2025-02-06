@@ -11,4 +11,16 @@ export const todosApi = {
     const response = await instance.get("/todos");
     return response.data;
   },
+
+  async addTodo(todo) {
+    const response = await instance.post("/todos", todo);
+    return response.data;
+  },
+
+  async toggleTodo(todo) {
+    const response = await instance.patch(`/todos/${todo.id}`, {
+      isComplete: !todo.isComplete,
+    });
+    return response.data;
+  },
 };

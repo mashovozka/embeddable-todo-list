@@ -19,7 +19,7 @@ export const TodoListContainer = styled.div`
 `;
 
 export const TodoItemsContainer = styled.div`
-  margin: auto;
+  margin: 0 auto 1rem;
   width: 90%;
   display: flex;
   flex-direction: column;

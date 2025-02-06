@@ -15,6 +15,7 @@ export default function TodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newTodo = {
       id: nanoid(),
       value: formField,

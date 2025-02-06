@@ -11,7 +11,7 @@ export const todosReducer = (state = initialState, action) => {
     case TODOS_ACTION_TYPES.SET_TODOS:
       return {
         ...state,
-        todos: [...state.todos, ...action.payload],
+        todos: action.payload.reverse(),
         completedTodos: action.payload.filter((todo) => todo.isComplete).length,
         inProgressTodos: action.payload.filter((todo) => !todo.isComplete)
           .length,
@@ -25,6 +25,7 @@ export const todosReducer = (state = initialState, action) => {
 
     case TODOS_ACTION_TYPES.REMOVE_TODO:
       return state.filter((todo) => todo.id !== action.payload);
+
     case TODOS_ACTION_TYPES.TOGGLE_COMPLETE_TODO:
       const updatedTodos = state.todos.map((todo) =>
         todo.id === action.payload.id
