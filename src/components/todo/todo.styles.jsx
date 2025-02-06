@@ -9,4 +9,5 @@ export const TodoContainer = styled.div`
   border: 1px solid black;
   border-radius: 8px;
   width: 77%;
+  text-decoration: ${(props) => (props.isComplete ? "line-through" : "none")};
 `;
