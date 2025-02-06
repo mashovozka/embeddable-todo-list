@@ -11,7 +11,9 @@ export const todosReducer = (state = initialState, action) => {
     case TODOS_ACTION_TYPES.SET_TODOS:
       return {
         ...state,
-        todos: [...action.payload],
+        todos: [...action.payload]
+          .sort((a, b) => b.isComplete - a.isComplete)
+          .reverse(),
         completedTodos: action.payload.filter((todo) => todo.isComplete).length,
         inProgressTodos: action.payload.filter((todo) => !todo.isComplete)
           .length,
