@@ -1,8 +1,6 @@
 import { todosApi } from "../../api/api";
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-import { setError } from "./todos.slice";
+import { setFailedToGetTodos, setShowToastError } from "./todos.slice";
 
 export const fetchTodosAsync = createAsyncThunk(
   "fetchTodosAsync",
@@ -11,7 +9,8 @@ export const fetchTodosAsync = createAsyncThunk(
       const response = await todosApi.getTodos();
       return response;
     } catch (error) {
-      dispatch(setError(error));
+      dispatch(setFailedToGetTodos(true));
+      dispatch(setShowToastError(true));
     }
   }
 );
@@ -23,7 +22,7 @@ export const addTodoAsync = createAsyncThunk(
       const response = await todosApi.addTodo(newTodo);
       return response;
     } catch (error) {
-      console.log("error", error);
+      dispatch(setShowToastError(true));
     }
   }
 );
@@ -35,7 +34,7 @@ export const toggleTodoAsync = createAsyncThunk(
       const response = await todosApi.toggleTodo(toggledTodo);
       return response;
     } catch (error) {
-      console.log("error", error);
+      dispatch(setShowToastError(true));
     }
   }
 );

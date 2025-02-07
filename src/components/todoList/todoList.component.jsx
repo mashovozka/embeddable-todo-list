@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { fetchTodosAsync } from "../../store/todos/todos.action";
 import Loader from "../loader/loader.component";
 import ErrorMessage from "../errorMessage/errorMessage.component";
+import { Toaster, toast } from "sonner";
 
 export default function TodoList() {
   const dispatch = useDispatch();
@@ -15,11 +16,18 @@ export default function TodoList() {
   const todos = useSelector((state) => state.todos.todos);
 
   const isLoading = useSelector((state) => state.todos.isLoading);
-  const error = useSelector((state) => state.todos.error);
+  const failedToGetTodos = useSelector((state) => state.todos.failedToGetTodos);
+  const showToastError = useSelector((state) => state.todos.showToastError);
 
   useEffect(() => {
     dispatch(fetchTodosAsync());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (showToastError) {
+      toast.error("Error!");
+    }
+  }, [dispatch, showToastError]);
 
   return (
     <TodoListContainer>
@@ -27,12 +35,13 @@ export default function TodoList() {
       <TodoForm />
       <Status />
       {isLoading && <Loader />}
-      {error && <ErrorMessage />}
+      {failedToGetTodos && <ErrorMessage />}
       <TodoItemsContainer>
         {todos.map((todo, i) => (
           <Todo key={i} todo={todo} />
         ))}
       </TodoItemsContainer>
+      <Toaster richColors position="bottom-left" />
     </TodoListContainer>
   );
 }

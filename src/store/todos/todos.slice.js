@@ -6,13 +6,20 @@ const initialState = {
   completedTodos: 0,
   inProgressTodos: 0,
   isLoading: false,
-  error: null,
+  failedToGetTodos: false,
+  showToastError: false,
 };
 
 const todosSlice = createSlice({
   name: "todos",
   initialState: initialState,
   reducers: {
+    setFailedToGetTodos: (state) => {
+      state.failedToGetTodos = true;
+    },
+    setShowToastError: (state, action) => {
+      state.showToastError = true;
+    },
     addTodo: (state, action) => {
       state.todos = [action.payload, ...state.todos];
       state.inProgressTodos++;
@@ -42,12 +49,17 @@ const todosSlice = createSlice({
 
     builder.addCase(fetchTodosAsync.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = true;
+      state.showToastError = true;
+      state.failedToGetTodos = true;
     });
 
     builder.addCase(addTodoAsync.fulfilled, (state, action) => {
       state.todos = [action.payload, ...state.todos];
       state.inProgressTodos++;
+    });
+
+    builder.addCase(addTodoAsync.rejected, (state) => {
+      state.showToastError = true;
     });
 
     builder.addCase(toggleTodoAsync.fulfilled, (state, action) => {
@@ -58,8 +70,13 @@ const todosSlice = createSlice({
       state.completedTodos = updatedTodos.filter((todo) => todo.done).length;
       state.inProgressTodos = updatedTodos.filter((todo) => !todo.done).length;
     });
+
+    builder.addCase(toggleTodoAsync.rejected, (state) => {
+      state.showToastError = true;
+    });
   },
 });
 
 export const todosReducer = todosSlice.reducer;
-export const { setError, addTodo, toggleTodo } = todosSlice.actions;
+export const { setFailedToGetTodos, setShowToastError, addTodo, toggleTodo } =
+  todosSlice.actions;
