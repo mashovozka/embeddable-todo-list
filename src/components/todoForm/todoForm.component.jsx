@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NewTodoForm } from "./todoForm.styles";
 import { nanoid } from "nanoid";
-import { TODOS_ACTION_TYPES } from "../../store/todos/todos.action";
+import { addTodoAsync } from "../../store/todos/todos.action";
 
 export default function TodoForm() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function TodoForm() {
       createdAt: Date.now(),
     };
 
-    dispatch({ type: TODOS_ACTION_TYPES.ADD_TODO, payload: newTodo });
+    dispatch(addTodoAsync(newTodo));
     setFormField("");
   };
 

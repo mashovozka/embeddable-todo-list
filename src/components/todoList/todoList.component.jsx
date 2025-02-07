@@ -4,9 +4,9 @@ import TodoForm from "../todoForm/todoForm.component";
 import Todo from "../todo/todo.component";
 import { TodoListContainer, TodoItemsContainer } from "./todoList.styles";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getTodos } from "../../store/todos/todos.action";
+import { fetchTodosAsync } from "../../store/todos/todos.action";
 import Loader from "../loader/loader.component";
 
 export default memo(function TodoList() {
@@ -14,15 +14,10 @@ export default memo(function TodoList() {
 
   const todos = useSelector((state) => state.todos.todos);
 
-  const [isFetching, setIsFetching] = useState(false);
+  const isLoading = useSelector((state) => state.todos.isLoading);
 
   useEffect(() => {
-    const fetchTodos = async () => {
-      setIsFetching(true);
-      await dispatch(getTodos());
-      setIsFetching(false);
-    };
-    fetchTodos();
+    dispatch(fetchTodosAsync());
   }, []);
 
   return (
@@ -30,7 +25,7 @@ export default memo(function TodoList() {
       <h1>Todo List</h1>
       <TodoForm />
       <Status />
-      {isFetching && <Loader />}
+      {isLoading && <Loader />}
       <TodoItemsContainer>
         {todos.map((todo, i) => (
           <Todo key={i} todo={todo} />

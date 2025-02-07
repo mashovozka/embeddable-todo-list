@@ -4,17 +4,31 @@ const initialState = {
   todos: [],
   completedTodos: 0,
   inProgressTodos: 0,
+  isLoading: false,
+  error: null,
 };
 
 export const todosReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TODOS_ACTION_TYPES.SET_TODOS:
+    case TODOS_ACTION_TYPES.FETCH_TODOS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case TODOS_ACTION_TYPES.FETCH_TODOS_SUCCESS:
       return {
         ...state,
         todos: action.payload.reverse(),
         completedTodos: action.payload.filter((todo) => todo.isComplete).length,
         inProgressTodos: action.payload.filter((todo) => !todo.isComplete)
           .length,
+        isLoading: false,
+      };
+    case TODOS_ACTION_TYPES.FETCH_TODOS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
       };
     case TODOS_ACTION_TYPES.ADD_TODO:
       return {
@@ -23,10 +37,7 @@ export const todosReducer = (state = initialState, action) => {
         inProgressTodos: state.inProgressTodos + 1,
       };
 
-    case TODOS_ACTION_TYPES.REMOVE_TODO:
-      return state.filter((todo) => todo.id !== action.payload);
-
-    case TODOS_ACTION_TYPES.TOGGLE_COMPLETE_TODO:
+    case TODOS_ACTION_TYPES.TOGGLE_TODO:
       const updatedTodos = state.todos.map((todo) =>
         todo.id === action.payload.id
           ? { ...todo, isComplete: !todo.isComplete }
