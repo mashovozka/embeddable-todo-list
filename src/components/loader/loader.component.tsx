@@ -1,9 +1,11 @@
 import { LoaderSpinner, LoaderContainer } from "./loader.styles";
 
-export default function Loader() {
+const Loader: React.FC = () => {
   return (
     <LoaderContainer>
       <LoaderSpinner />
     </LoaderContainer>
   );
-}
+};
+
+export default Loader;

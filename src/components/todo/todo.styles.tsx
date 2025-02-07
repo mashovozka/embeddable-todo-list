@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { mainColor, shadowColor } from "../../App.styles";
 
-export const TodoContainer = styled.div`
+interface TodoContainerProps {
+  done: boolean;
+}
+
+export const TodoContainer = styled.div<TodoContainerProps>`
   margin: 0.5rem auto;
   padding: 1.1rem;
   border-radius: 8px;

@@ -1,5 +1,12 @@
 import axios from "axios";
 
+interface Todo {
+  id: string;
+  value: string;
+  done: boolean;
+  createdAt: number;
+}
+
 export const baseUrl = "http://localhost:3001";
 
 const instance = axios.create({
@@ -12,12 +19,12 @@ export const todosApi = {
     return response.data;
   },
 
-  async addTodo(todo) {
+  async addTodo(todo: Todo) {
     const response = await instance.post("/todos", todo);
     return response.data;
   },
 
-  async toggleTodo(todo) {
+  async toggleTodo(todo: Todo) {
     const response = await instance.patch(`/todos/${todo.id}`, {
       done: !todo.done,
     });

@@ -1,7 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchTodosAsync, addTodoAsync, toggleTodoAsync } from "./todos.action";
 
-const initialState = {
+interface TodosState {
+  todos: {
+    id: string;
+    value: string;
+    done: boolean;
+    createdAt: number;
+  }[];
+  completedTodos: number;
+  inProgressTodos: number;
+  isLoading: boolean;
+  failedToGetTodos: boolean;
+  showToastError: boolean;
+}
+
+const initialState: TodosState = {
   todos: [],
   completedTodos: 0,
   inProgressTodos: 0,
@@ -17,20 +31,8 @@ const todosSlice = createSlice({
     setFailedToGetTodos: (state) => {
       state.failedToGetTodos = true;
     },
-    setShowToastError: (state, action) => {
+    setShowToastError: (state) => {
       state.showToastError = true;
-    },
-    addTodo: (state, action) => {
-      state.todos = [action.payload, ...state.todos];
-      state.inProgressTodos++;
-    },
-    toggleTodo: (state, action) => {
-      const updatedTodos = state.todos.map((todo) =>
-        todo.id === action.payload.id ? { ...todo, done: !todo.done } : todo
-      );
-      state.todos = updatedTodos;
-      state.completedTodos = updatedTodos.filter((todo) => todo.done).length;
-      state.inProgressTodos = updatedTodos.filter((todo) => !todo.done).length;
     },
   },
   extraReducers: (builder) => {
@@ -39,6 +41,7 @@ const todosSlice = createSlice({
     });
 
     builder.addCase(fetchTodosAsync.fulfilled, (state, action) => {
+      console.log("fetchTodosAsync.fulfilled", action.payload);
       state.todos = action.payload.reverse();
       state.completedTodos = action.payload.filter((todo) => todo.done).length;
       state.inProgressTodos = action.payload.filter(
@@ -78,5 +81,4 @@ const todosSlice = createSlice({
 });
 
 export const todosReducer = todosSlice.reducer;
-export const { setFailedToGetTodos, setShowToastError, addTodo, toggleTodo } =
-  todosSlice.actions;
+export const { setFailedToGetTodos, setShowToastError } = todosSlice.actions;

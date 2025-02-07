@@ -2,22 +2,22 @@ import Status from "../Status/Status.component";
 import TodoForm from "../todoForm/todoForm.component";
 import Todo from "../todo/todo.component";
 import { TodoListContainer, TodoItemsContainer } from "./todoList.styles";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { fetchTodosAsync } from "../../store/todos/todos.action";
 import Loader from "../loader/loader.component";
 import ErrorMessage from "../errorMessage/errorMessage.component";
 import { Toaster, toast } from "sonner";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
-export default function TodoList() {
-  const dispatch = useDispatch();
+const TodoList: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const todos = useSelector((state) => state.todos.todos);
-
-  const isLoading = useSelector((state) => state.todos.isLoading);
-  const failedToGetTodos = useSelector((state) => state.todos.failedToGetTodos);
-  const showToastError = useSelector((state) => state.todos.showToastError);
+  const todos = useAppSelector((state) => state.todos.todos);
+  const isLoading = useAppSelector((state) => state.todos.isLoading);
+  const failedToGetTodos = useAppSelector(
+    (state) => state.todos.failedToGetTodos
+  );
+  const showToastError = useAppSelector((state) => state.todos.showToastError);
 
   useEffect(() => {
     dispatch(fetchTodosAsync());
@@ -27,7 +27,7 @@ export default function TodoList() {
     if (showToastError) {
       toast.error("Error!");
     }
-  }, [dispatch, showToastError]);
+  }, [showToastError]);
 
   return (
     <TodoListContainer>
@@ -44,4 +44,6 @@ export default function TodoList() {
       <Toaster richColors position="bottom-left" />
     </TodoListContainer>
   );
-}
+};
+
+export default TodoList;

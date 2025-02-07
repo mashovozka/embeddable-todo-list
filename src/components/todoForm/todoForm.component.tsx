@@ -1,22 +1,22 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../store/hooks";
 import { NewTodoForm } from "./todoForm.styles";
 import { nanoid } from "nanoid";
 import { addTodoAsync } from "../../store/todos/todos.action";
+import { ITodo } from "../../types/todo.types";
 
 export default function TodoForm() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [formField, setFormField] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormField(e.target.value);
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    const newTodo = {
+    const newTodo: ITodo = {
       id: nanoid(),
       value: formField,
       done: false,

@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
-import "./todo.styles.jsx";
-import { TodoContainer } from "./todo.styles";
 import { toggleTodoAsync } from "../../store/todos/todos.action";
+import { useAppDispatch } from "../../store/hooks";
+import { ITodo } from "../../types/todo.types";
+import { TodoContainer } from "./todo.styles";
 
-export default function Todo({ todo }) {
-  const dispatch = useDispatch();
+const Todo = ({ todo }: { todo: ITodo }) => {
+  const dispatch = useAppDispatch();
 
   const { value, done } = todo;
 
@@ -17,4 +17,6 @@ export default function Todo({ todo }) {
       {value}
     </TodoContainer>
   );
-}
+};
+
+export default Todo;
