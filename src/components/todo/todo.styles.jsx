@@ -6,7 +6,7 @@ export const TodoContainer = styled.div`
   padding: 1.1rem;
   border-radius: 8px;
   width: 90%;
-  border: 1px solid ${(props) => (props.isComplete ? shadowColor : mainColor)};
-  text-decoration: ${(props) => (props.isComplete ? "line-through" : "none")};
-  color: ${(props) => (props.isComplete ? shadowColor : mainColor)};
+  border: 1px solid ${(props) => (props.done ? shadowColor : mainColor)};
+  text-decoration: ${(props) => (props.done ? "line-through" : "none")};
+  color: ${(props) => (props.done ? shadowColor : mainColor)};
 `;

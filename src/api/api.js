@@ -19,7 +19,7 @@ export const todosApi = {
 
   async toggleTodo(todo) {
     const response = await instance.patch(`/todos/${todo.id}`, {
-      isComplete: !todo.isComplete,
+      done: !todo.done,
     });
     return response.data;
   },

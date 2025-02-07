@@ -19,7 +19,7 @@ export default function TodoForm() {
     const newTodo = {
       id: nanoid(),
       value: formField,
-      isComplete: false,
+      done: false,
       createdAt: Date.now(),
     };
 
