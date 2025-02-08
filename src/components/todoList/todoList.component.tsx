@@ -1,4 +1,4 @@
-import Status from "../Status/Status.component";
+import Status from "../status/status.component";
 import TodoForm from "../todoForm/todoForm.component";
 import Todo from "../todo/todo.component";
 import { TodoListContainer, TodoItemsContainer } from "./todoList.styles";
