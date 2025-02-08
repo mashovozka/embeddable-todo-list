@@ -8,8 +8,6 @@ interface TodosState {
     done: boolean;
     createdAt: number;
   }[];
-  completedTodos: number;
-  inProgressTodos: number;
   isLoading: boolean;
   failedToGetTodos: boolean;
   showToastError: boolean;
@@ -17,8 +15,6 @@ interface TodosState {
 
 const initialState: TodosState = {
   todos: [],
-  completedTodos: 0,
-  inProgressTodos: 0,
   isLoading: false,
   failedToGetTodos: false,
   showToastError: false,
@@ -43,10 +39,7 @@ const todosSlice = createSlice({
     builder.addCase(fetchTodosAsync.fulfilled, (state, action) => {
       console.log("fetchTodosAsync.fulfilled", action.payload);
       state.todos = action.payload.reverse();
-      state.completedTodos = action.payload.filter((todo) => todo.done).length;
-      state.inProgressTodos = action.payload.filter(
-        (todo) => !todo.done
-      ).length;
+
       state.isLoading = false;
     });
 
@@ -58,7 +51,6 @@ const todosSlice = createSlice({
 
     builder.addCase(addTodoAsync.fulfilled, (state, action) => {
       state.todos = [action.payload, ...state.todos];
-      state.inProgressTodos++;
     });
 
     builder.addCase(addTodoAsync.rejected, (state) => {
@@ -70,8 +62,6 @@ const todosSlice = createSlice({
         todo.id === action.payload.id ? { ...todo, done: !todo.done } : todo
       );
       state.todos = updatedTodos;
-      state.completedTodos = updatedTodos.filter((todo) => todo.done).length;
-      state.inProgressTodos = updatedTodos.filter((todo) => !todo.done).length;
     });
 
     builder.addCase(toggleTodoAsync.rejected, (state) => {

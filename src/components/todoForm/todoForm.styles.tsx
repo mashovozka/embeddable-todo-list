@@ -3,7 +3,6 @@ import { mainColor, secondaryColor } from "@src/App.styles";
 
 export const NewTodoForm = styled.form`
   display: flex;
-  flex-wrap: wrap;
   margin: 3rem auto;
   width: 90%;
   color: ${mainColor};
@@ -17,6 +16,7 @@ export const NewTodoForm = styled.form`
     outline: none;
     border-radius: 8px;
     height: 3rem;
+    width: 100%;
   }
 
   button {

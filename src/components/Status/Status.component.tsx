@@ -2,10 +2,10 @@ import { StatusContainer } from "./status.styles";
 import { useAppSelector } from "@src/store/hooks";
 
 const Status = () => {
-  const completedTodos = useAppSelector((state) => state.todos.completedTodos);
-  const inProgressTodos = useAppSelector(
-    (state) => state.todos.inProgressTodos
-  );
+  const todos = useAppSelector((state) => state.todos.todos);
+
+  const completedTodos = todos.filter((todo) => todo.done).length;
+  const inProgressTodos = todos.length - completedTodos;
 
   return (
     <StatusContainer>

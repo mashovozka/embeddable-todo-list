@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Toaster, toast } from "sonner";
 
 import Status from "@src/components/status/status.component";
 import TodoForm from "@src/components/todoForm/todoForm.component";
@@ -20,31 +19,26 @@ const TodoList: React.FC = () => {
   const failedToGetTodos = useAppSelector(
     (state) => state.todos.failedToGetTodos
   );
-  const showToastError = useAppSelector((state) => state.todos.showToastError);
 
   useEffect(() => {
     dispatch(fetchTodosAsync());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (showToastError) {
-      toast.error("Error!");
-    }
-  }, [showToastError]);
-
   return (
     <TodoListContainer>
       <h1>Todo List</h1>
+
       <TodoForm />
       <Status />
+
       {isLoading && <Loader />}
       {failedToGetTodos && <ErrorMessage />}
+
       <TodoItemsContainer>
         {todos.map((todo, i) => (
           <Todo key={i} todo={todo} />
         ))}
       </TodoItemsContainer>
-      <Toaster richColors position="bottom-left" />
     </TodoListContainer>
   );
 };

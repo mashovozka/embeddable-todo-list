@@ -11,7 +11,7 @@ interface todo {
 }
 
 export const fetchTodosAsync = createAsyncThunk<todo[], void>(
-  "todos/fetchTodos",
+  "fetchTodos",
   async () => {
     const response = await todosApi.getTodos();
     return response;
