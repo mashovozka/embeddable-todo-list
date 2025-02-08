@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mainColor, shadowColor } from "@src/App.styles";
+import { mainColor, shadowColor } from "@src/utils/consts";
 
 interface TodoContainerProps {
   done: boolean;
@@ -12,11 +12,11 @@ export const TodoContainer = styled(
     <div {...rest}>{children}</div>
   )
 )`
-  margin: 0.5rem auto;
-  padding: 1.1rem;
+  padding: 1rem;
   border-radius: 8px;
-  width: 90%;
+  width: 100%;
   border: 1px solid ${({ done }) => (done ? shadowColor : mainColor)};
   text-decoration: ${({ done }) => (done ? "line-through" : "none")};
   color: ${({ done }) => (done ? shadowColor : mainColor)};
+  box-sizing: border-box;
 `;

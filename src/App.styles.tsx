@@ -1,8 +1,5 @@
 import styled from "styled-components";
-
-export const mainColor = "#002244";
-export const secondaryColor = "#f7f1f1";
-export const shadowColor = "#6699CC";
+import { mainColor } from "@src/utils/consts";
 
 export const AppContainer = styled.div`
   color: ${mainColor};

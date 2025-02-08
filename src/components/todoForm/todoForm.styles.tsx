@@ -1,31 +1,31 @@
 import styled from "styled-components";
-import { mainColor, secondaryColor } from "@src/App.styles";
+import { mainColor, secondaryColor, buttonColor } from "@src/utils/consts";
 
 export const NewTodoForm = styled.form`
+  height: 4rem;
+
   display: flex;
-  margin: 3rem auto;
-  width: 90%;
+  width: 100%;
+  gap: 1em;
   color: ${mainColor};
 
   input {
-    flex-grow: 1;
     border: 3px solid ${mainColor};
     background: ${secondaryColor};
-    padding: 0.5rem 3rem;
+    padding-left: 2rem;
     font-size: initial;
     outline: none;
     border-radius: 8px;
-    height: 3rem;
+    box-sizing: border-box;
     width: 100%;
+    height: 100%;
   }
 
   button {
     background: ${mainColor};
-    color: white;
-    border: 3px solid black;
-    padding: 0.5rem 1rem;
+    color: ${buttonColor};
+    padding: 0.5rem 1.5rem;
     border-radius: 8px;
-    margin-left: 1rem;
     cursor: pointer;
     font-size: 1.5rem;
   }
