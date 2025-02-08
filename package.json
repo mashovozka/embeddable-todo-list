@@ -25,10 +25,10 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
     "start:server": "npx json-server --watch db.json --port 3001",
     "prepare": "cp db.json.sample db.json"
   },
@@ -51,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "@types/styled-components": "^5.1.25",
     "json-server": "^0.17.0",
     "sass": "^1.54.0"

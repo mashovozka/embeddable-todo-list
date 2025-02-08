@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mainColor, shadowColor } from "../../App.styles";
+import { mainColor, shadowColor } from "@src/App.styles";
 
 interface TodoContainerProps {
   done: boolean;

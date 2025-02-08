@@ -1,13 +1,16 @@
-import Status from "../status/status.component";
-import TodoForm from "../todoForm/todoForm.component";
-import Todo from "../todo/todo.component";
-import { TodoListContainer, TodoItemsContainer } from "./todoList.styles";
 import { useEffect } from "react";
-import { fetchTodosAsync } from "../../store/todos/todos.action";
-import Loader from "../loader/loader.component";
-import ErrorMessage from "../errorMessage/errorMessage.component";
 import { Toaster, toast } from "sonner";
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
+
+import Status from "@src/components/status/status.component";
+import TodoForm from "@src/components/todoForm/todoForm.component";
+import Todo from "@src/components/todo/todo.component";
+import Loader from "@src/components/loader/loader.component";
+import ErrorMessage from "@src/components/errorMessage/errorMessage.component";
+
+import { fetchTodosAsync } from "@src/store/todos/todos.action";
+import { useAppSelector, useAppDispatch } from "@src/store/hooks";
+
+import { TodoListContainer, TodoItemsContainer } from "./todoList.styles";
 
 const TodoList: React.FC = () => {
   const dispatch = useAppDispatch();

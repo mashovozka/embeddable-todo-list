@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { mainColor } from "../../App.styles";
+import { mainColor } from "@src/App.styles";
 
 export const TodoListContainer = styled.div`
   margin: 4rem auto;

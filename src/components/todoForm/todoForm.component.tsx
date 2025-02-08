@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../store/hooks";
-import { NewTodoForm } from "./todoForm.styles";
 import { nanoid } from "nanoid";
-import { addTodoAsync } from "../../store/todos/todos.action";
-import { ITodo } from "../../types/todo.types";
+import { useAppDispatch } from "@src/store/hooks";
+import { addTodoAsync } from "@src/store/todos/todos.action";
+import { ITodo } from "@src/types/todo.types";
+import { NewTodoForm } from "./todoForm.styles";
 
 export default function TodoForm() {
   const dispatch = useAppDispatch();

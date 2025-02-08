@@ -1,6 +1,6 @@
-import { toggleTodoAsync } from "../../store/todos/todos.action";
-import { useAppDispatch } from "../../store/hooks";
-import { ITodo } from "../../types/todo.types";
+import { toggleTodoAsync } from "@src/store/todos/todos.action";
+import { useAppDispatch } from "@src/store/hooks";
+import { ITodo } from "@src/types/todo.types";
 import { TodoContainer } from "./todo.styles";
 
 const Todo = ({ todo }: { todo: ITodo }) => {

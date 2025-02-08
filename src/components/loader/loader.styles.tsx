@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { mainColor } from "../../App.styles";
+import { mainColor } from "@src/App.styles";
 
 const rotationAnimation = keyframes`
   0% {

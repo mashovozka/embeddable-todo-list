@@ -1,6 +1,7 @@
-import { todosApi } from "../../api/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ITodo } from "../../types/todo.types";
+
+import { todosApi } from "@src/api/api";
+import { ITodo } from "@src/types/todo.types";
 
 interface todo {
   id: string;

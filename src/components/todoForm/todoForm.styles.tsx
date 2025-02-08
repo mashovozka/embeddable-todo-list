@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mainColor, secondaryColor } from "../../App.styles";
+import { mainColor, secondaryColor } from "@src/App.styles";
 
 export const NewTodoForm = styled.form`
   display: flex;

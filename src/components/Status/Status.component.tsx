@@ -1,5 +1,5 @@
 import { StatusContainer } from "./status.styles";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "@src/store/hooks";
 
 const Status = () => {
   const completedTodos = useAppSelector((state) => state.todos.completedTodos);
