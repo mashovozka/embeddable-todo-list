@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import Status from "@src/components/Status/Status.component";
+import Status from "@src/components/Status/status.component";
 import TodoForm from "@src/components/todoForm/todoForm.component";
 import Todo from "@src/components/todo/todo.component";
 import Loader from "@src/components/loader/loader.component";
