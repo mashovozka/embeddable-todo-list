@@ -1,4 +1,4 @@
-import { StatusContainer } from "./status.styles";
+import { StatusContainer } from "./Status.styles";
 import { useAppSelector } from "@src/store/hooks";
 
 const Status = () => {
