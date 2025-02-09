@@ -35,8 +35,8 @@ const TodoList: React.FC = () => {
       {failedToGetTodos && <ErrorMessage />}
 
       <TodoItemsContainer>
-        {todos.map((todo, i) => (
-          <Todo key={i} todo={todo} />
+        {todos.map((todo) => (
+          <Todo key={todo.id} todo={todo} />
         ))}
       </TodoItemsContainer>
     </TodoListContainer>

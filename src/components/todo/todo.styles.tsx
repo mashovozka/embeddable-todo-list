@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mainColor, shadowColor } from "@src/utils/consts";
+import { whiteColor, mainColor, shadowColor } from "@src/utils/consts";
 
 interface TodoContainerProps {
   done: boolean;
@@ -19,4 +19,11 @@ export const TodoContainer = styled(
   text-decoration: ${({ done }) => (done ? "line-through" : "none")};
   color: ${({ done }) => (done ? shadowColor : mainColor)};
   box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background: ${({ done }) => (done ? shadowColor : mainColor)};
+    color: ${whiteColor};
+  }
 `;
