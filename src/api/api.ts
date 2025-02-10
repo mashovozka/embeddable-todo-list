@@ -7,7 +7,8 @@ interface Todo {
   createdAt: number;
 }
 
-export const baseUrl = "http://localhost:3001";
+// export const baseUrl = "http://localhost:3001";
+export const baseUrl = "/db.json";
 
 const instance = axios.create({
   baseURL: baseUrl,
