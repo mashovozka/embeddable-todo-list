@@ -10088,6 +10088,11 @@ micromatch@^4.0.5, micromatch@^4.0.8:
     braces "^3.0.3"
     picomatch "^2.3.1"
 
+milliparsec@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/milliparsec/-/milliparsec-3.0.0.tgz#cbb146e943eb191f1d986eb8b3947d3c25c8aa0d"
+  integrity sha512-ZnhRJMDFgtvMwzfxHv8bAzVAHv7MgE5b1tPljzWdQT0YJ2GiLuCHuW4x7wz5Tf7nyPnHZEWBHMJIviB1FiiPHg==
+
 milliparsec@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/milliparsec/-/milliparsec-4.0.0.tgz#ba5169aaa4922587c92f22878df9c85730a0d893"
